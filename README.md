@@ -5,7 +5,7 @@
 #### Steps how to run it:
 
 ```bash
-git clone [https://github.com/bkresaj/Esp32_uart_class.git](https://github.com/bkresaj/Esp32_uart_class.git)
+git clone https://github.com/bkresaj/Esp32_uart_class.git
 ```
 
 #### Run docker container inside folder(firstly it will download docker image):
