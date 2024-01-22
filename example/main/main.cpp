@@ -1,21 +1,8 @@
-/*
- * SPDX-FileCopyrightText: 2010-2022 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: CC0-1.0
- */
-
-#include <inttypes.h>
-#include <stdio.h>
-
-#include <cstring>
 #include <array>
-#include "esp_chip_info.h"
-#include "esp_flash.h"
+
 #include "esp_log.h"
-#include "esp_system.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "sdkconfig.h"
 #include "uart.h"
 
 extern "C"
@@ -25,15 +12,13 @@ extern "C"
 
 void sending_task(void *pvParameter)
 {
-    uart_config_t uart_config = {
-        .baud_rate = 115200,
-        .data_bits = UART_DATA_8_BITS,
-        .parity = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .rx_flow_ctrl_thresh = 122,
-        .source_clk = UART_SCLK_DEFAULT
-    };
+    uart_config_t uart_config = {.baud_rate = 115200,
+                                 .data_bits = UART_DATA_8_BITS,
+                                 .parity = UART_PARITY_DISABLE,
+                                 .stop_bits = UART_STOP_BITS_1,
+                                 .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+                                 .rx_flow_ctrl_thresh = 122,
+                                 .source_clk = UART_SCLK_DEFAULT};
 
     uart_pin_config_t uart_pin_config = {
         .uart_port = UART_NUM_1, .tx_pin = 19, .rx_pin = 18};
@@ -55,15 +40,13 @@ void sending_task(void *pvParameter)
 
 void receiving_task(void *pvParameter)
 {
-    uart_config_t uart_config = {
-        .baud_rate = 115200,
-        .data_bits = UART_DATA_8_BITS,
-        .parity = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .rx_flow_ctrl_thresh = 122,
-        .source_clk = UART_SCLK_DEFAULT
-    };
+    uart_config_t uart_config = {.baud_rate = 115200,
+                                 .data_bits = UART_DATA_8_BITS,
+                                 .parity = UART_PARITY_DISABLE,
+                                 .stop_bits = UART_STOP_BITS_1,
+                                 .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+                                 .rx_flow_ctrl_thresh = 122,
+                                 .source_clk = UART_SCLK_DEFAULT};
 
     uart_pin_config_t uart_pin_config = {
         .uart_port = UART_NUM_2, .tx_pin = 17, .rx_pin = 16};
